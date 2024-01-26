@@ -58,7 +58,7 @@ class AuthenticationController extends Controller
         ], 200);
     }
 
-    public function getUserData()
+    public function getUserData(): Response
     {
         $user = auth()->user();
 
