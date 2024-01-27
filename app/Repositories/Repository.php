@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\Task\App\Models\Task;
 
 abstract class Repository
 {
@@ -46,7 +47,7 @@ abstract class Repository
      * @param int $id
      * @return Model|null
      */
-    public function findById(int $id): ?Model
+    public function findById(int $id): ?Task
     {
         try {
             return $this->model->findOrFail($id);
