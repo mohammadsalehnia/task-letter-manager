@@ -47,7 +47,7 @@ abstract class Repository
      * @param int $id
      * @return Model|null
      */
-    public function findById(int $id): ?Task
+    public function findById(int $id): ?Model
     {
         try {
             return $this->model->findOrFail($id);

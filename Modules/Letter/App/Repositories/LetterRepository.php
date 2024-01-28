@@ -1,16 +1,16 @@
 <?php
 
-namespace Modules\Task\App\Repositories;
+namespace Modules\Letter\App\Repositories;
 
 use App\Repositories\Repository;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Modules\Task\App\Models\Task;
+use Modules\Letter\App\Models\Letter;
 
-class TaskRepository extends Repository
+class LetterRepository extends Repository
 {
     public function model(): string
     {
-        return Task::class;
+        return Letter::class;
     }
 
     /**
@@ -22,8 +22,8 @@ class TaskRepository extends Repository
         return $this->model->latest()->paginate($paginateNumber);
     }
 
-    public function update(Task $task, array $data): bool
+    public function update(Letter $letter, array $data): bool
     {
-        return $task->update($data);
+        return $letter->update($data);
     }
 }

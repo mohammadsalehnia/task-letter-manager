@@ -1,4 +1,5 @@
 {
     "Authentication": true,
-    "Task": true
+    "Task": true,
+    "Letter": true
 }
