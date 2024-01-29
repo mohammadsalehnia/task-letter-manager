@@ -23,7 +23,7 @@ class SendLetterJob implements ShouldQueue
      */
     public function __construct(public Letter $letter)
     {
-//        $this->onQueue('sending-letter');
+        $this->onQueue('sending-letter');
 
         Log::info('SendLetterJob __construct');
 
