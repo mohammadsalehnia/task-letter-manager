@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Letter\tests\Unit;
+namespace Modules\Letter\tests\Unit\Repositories;
 
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -8,8 +8,6 @@ use Modules\Letter\App\Models\Letter;
 use Modules\Letter\App\Repositories\LetterRepository;
 use Modules\Task\App\Models\Task;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LetterRepositoryTest extends TestCase
 {
