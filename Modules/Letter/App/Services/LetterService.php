@@ -38,11 +38,5 @@ class LetterService
         return $letter;
     }
 
-//    public function update(int $taskId, array $data): bool
-//    {
-//        $task = $this->taskRepository->findById($taskId);
-//        return $this->taskRepository->update($task, $data);
-//    }
-
 
 }
