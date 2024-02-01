@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Letter\tests\Feature\Controllers;
+namespace Modules\Task\tests\Feature\Controllers;
 
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ControllerHelperTesting extends TestCase
+class TaskControllerHelperTesting extends TestCase
 {
     use RefreshDatabase;
     protected $middlewares = ['api', 'json.response', 'auth:api','is-admin'];

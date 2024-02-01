@@ -7,12 +7,9 @@ use Laravel\Passport\Passport;
 use Modules\Task\App\Models\Task;
 use Modules\Task\App\resources\TaskCollection;
 use Modules\Task\App\resources\TaskResource;
-use Modules\Task\Database\Factories\TaskFactory;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class TaskControllerTest extends ControllerHelperTesting
+
+class TaskControllerTest extends TaskControllerHelperTesting
 {
     private $paginateNumber = 20;
 

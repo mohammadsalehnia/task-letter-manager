@@ -3,9 +3,11 @@
 namespace Modules\Letter\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Letter\App\Http\Requests\SearchLetterRequest;
 use Modules\Letter\App\Http\Requests\StoreLetterRequest;
 use Modules\Letter\App\Repositories\LetterRepository;
 use Modules\Letter\App\resources\LetterCollection;
@@ -178,5 +180,34 @@ class LetterController extends Controller
         return response([
             'message' => __('api_messages.delete_letter_successfully'),
         ], 200);
+    }
+
+
+    /**
+     * @OA\Post(
+     *      path="/api/v1/letters/search",
+     *      operationId="searchLetter",
+     *      tags={"Letter"},
+     *      summary="Search Letter",
+     *      description="Search Letter",
+     *      security={{"passport": {}},},
+     *     @OA\RequestBody(
+     *            required=true,
+     *            @OA\JsonContent(ref="#/components/schemas/SearchLetterRequest")
+     *        ),
+     *    @OA\Response(
+     *    response=200,
+     *    description="Success",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="api_messages.store_letter_successfully"),
+     *    ),
+     *  ),
+     * )
+     */
+    public function search(SearchLetterRequest $request): JsonResponse
+    {
+        $validatedData = $request->validated();
+        $articles = $this->letterService->filter($validatedData);
+        return response()->json($articles);
     }
 }

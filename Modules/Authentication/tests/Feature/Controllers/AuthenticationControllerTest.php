@@ -5,7 +5,7 @@ namespace Modules\Authentication\tests\Feature\Controllers;
 use App\Models\User;
 use Modules\Authentication\App\resources\UserResource;
 
-class AuthenticationControllerTest extends ControllerHelperTesting
+class AuthenticationControllerTest extends AuthenticationControllerHelperTesting
 {
 
     public function testRegisterMethod(): void

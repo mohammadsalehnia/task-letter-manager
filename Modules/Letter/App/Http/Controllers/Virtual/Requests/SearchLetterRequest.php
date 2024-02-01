@@ -5,14 +5,14 @@ namespace Modules\Letter\App\Http\Controllers\Virtual\Requests;
 /**
  *
  * @OA\Schema(
- *      title="Update Letter request",
- *      description="Update Letter request body data",
+ *      title="SearchLetterRequest",
+ *      description="Search Letter request body data",
  *      type="object",
- *      required={"title","body","status"},
+ *      required={"title","body"},
  *
  * )
  */
-class UpdateLetterRequest
+class SearchLetterRequest
 {
 
     /**

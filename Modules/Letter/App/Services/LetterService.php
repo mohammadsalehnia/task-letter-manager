@@ -5,6 +5,7 @@ namespace Modules\Letter\App\Services;
 use Modules\Letter\App\Jobs\SendLetterJob;
 use Modules\Letter\App\Models\Letter;
 use Modules\Letter\App\Repositories\LetterRepository;
+use Modules\Letter\App\resources\LetterCollection;
 
 class LetterService
 {
@@ -36,6 +37,12 @@ class LetterService
         SendLetterJob::dispatch($letter);
 
         return $letter;
+    }
+
+    public function filter(array $data, $limit = 20): LetterCollection
+    {
+        $result = $this->letterRepository->filter($data);
+        return new LetterCollection($result->paginate($limit));
     }
 
 
