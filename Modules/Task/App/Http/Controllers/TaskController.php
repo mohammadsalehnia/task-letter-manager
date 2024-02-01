@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Modules\Task\App\Http\Requests\StoreTaskRequest;
 use Modules\Task\App\Http\Requests\UpdateStatusRequest;
 use Modules\Task\App\Http\Requests\UpdateTaskRequest;
+use Modules\Task\App\Models\Task;
 use Modules\Task\App\Repositories\TaskRepository;
 use Modules\Task\App\resources\TaskCollection;
 use Modules\Task\App\resources\TaskResource;
@@ -28,7 +29,24 @@ class TaskController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/api/v1/tasks",
+     *      operationId="tasksIndex",
+     *      tags={"Task"},
+     *      summary="task index",
+     *      description="get all tasks",
+     *      security={{"passport": {}},},
+     *      @OA\Response(
+     *        response=200,
+     *        description="Success",
+     *        @OA\JsonContent(ref="#/components/schemas/TaskCollection")
+     *      ),
+     *      @OA\Response(
+     *        response=401,
+     *        description="Unauthorized",
+     *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
+     *      ),
+     *     )
      */
     public function index()
     {
@@ -36,7 +54,25 @@ class TaskController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *      path="/api/v1/tasks",
+     *      operationId="storeTask",
+     *      tags={"Task"},
+     *      summary="Store Task",
+     *      description="Store Task",
+     *      security={{"passport": {}},},
+     *     @OA\RequestBody(
+     *            required=true,
+     *            @OA\JsonContent(ref="#/components/schemas/StoreTaskRequest")
+     *        ),
+     *    @OA\Response(
+     *    response=200,
+     *    description="Success",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="api_messages.store_task_successfully"),
+     *    ),
+     *  ),
+     * )
      */
     public function store(StoreTaskRequest $request): Response
     {
@@ -50,7 +86,36 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the specified resource.
+     * @OA\Get(
+     *      path="/api/v1/tasks/{task}",
+     *      operationId="showTask",
+     *      tags={"Task"},
+     *      summary="show task",
+     *           description="show task",
+     *       security={{"passport": {}},},
+     *       @OA\Parameter(
+     *          description="show id",
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          example="1"
+     *      ),
+     *      @OA\Response(
+     *         response=200,
+     *         description="Success",
+     *         @OA\JsonContent(ref="#/components/schemas/TaskResource")
+     *       ),
+     *      @OA\Response(
+     *        response=404,
+     *        description="error",
+     *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
+     *      ),
+     *      @OA\Response(
+     *        response=401,
+     *        description="Unauthorized",
+     *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
+     *      ),
+     *     )
      */
     public function show($id)
     {
@@ -66,13 +131,46 @@ class TaskController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Patch(
+     *      path="/api/v1/tasks/{task}",
+     *      operationId="updateTask",
+     *      tags={"Task"},
+     *      summary="update task",
+     *           description="update task request api",
+     *       security={{"passport": {}},},
+     *       @OA\Parameter(
+     *          description="task id",
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          example="1"
+     *      ),
+     *      @OA\RequestBody(
+     *           required=true,
+     *           @OA\JsonContent(ref="#/components/schemas/UpdateTaskRequest")
+     *       ),
+     *      @OA\Response(
+     *        response=200,
+     *        description="Success",
+     *        @OA\JsonContent(ref="#/components/schemas/SuccessMessage")
+     *      ),
+     *      @OA\Response(
+     *        response=404,
+     *        description="error",
+     *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
+     *      ),
+     *      @OA\Response(
+     *        response=401,
+     *        description="Unauthorized",
+     *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
+     *      ),
+     *     )
      */
-    public function update(UpdateTaskRequest $request, $id): Response
+    public function update(UpdateTaskRequest $request, Task $task): Response
     {
         $validatedData = $request->validated();
 
-        $this->taskService->update($id, $validatedData);
+        $this->taskService->update($task->id, $validatedData);
 
         return response([
             'message' => __('api_messages.update_task_successfully'),
@@ -80,7 +178,36 @@ class TaskController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *      path="/api/v1/tasks/{task}",
+     *      operationId="destroyTask",
+     *      tags={"Task"},
+     *      summary="Delete task",
+     *      description="Delete task request api",
+     *       security={{"passport": {}},},
+     *       @OA\Parameter(
+     *          description="task id",
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          example="1"
+     *      ),
+     *      @OA\Response(
+     *        response=200,
+     *        description="Success",
+     *        @OA\JsonContent(ref="#/components/schemas/SuccessMessage")
+     *      ),
+     *      @OA\Response(
+     *        response=404,
+     *        description="Task Not Found",
+     *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
+     *      ),
+     *       @OA\Response(
+     *        response=401,
+     *        description="Unauthorized",
+     *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
+     *      ),
+     *     )
      */
     public function destroy($id): Response
     {

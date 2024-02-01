@@ -1,0 +1,1116 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "APIs Documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/authentication/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User Register",
+                "description": "User Register here",
+                "operationId": "Register",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text"
+                                    },
+                                    "email": {
+                                        "type": "text"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created successfully"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTMxNGY2Y2Q4OTliNjY2ZTg3OWIzOGJhYmE4NjU3M2FiN2ExMzQ2NWZmMmJkZmVhMTUxMWQ3ZGUxMDYyOTU4NmE0OWQ2NWZlMmYxNzU4MTAiLCJpYXQiOjE2Nzk4MzM1MzkuNzEwNDQzLCJuYmYiOjE2Nzk4MzM1MzkuNzEwNDQzLCJleHAiOjE2OTU3MzExMzkuNzA5MzU3LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gQM2KAo_U1mumbqqf0QVdSY35wgKvfUNY9mC0-H58SS5hrC-EkA8EYPCSzvibRQp9DjRsYShBZhz-xL587-QpdjzjjJ70KP1I1ELX7upyK1sBpkhpuB4rbeXId8m_L5mZTtoyHn0udwDOR65ebEXDmlgop2oLOMsPTUMBMu76QuPZO7MWwydCwKO6uC-dZrt6dTYA0hkacUDuIizm4MJ07eJdYxG_MkA52bJYlE6Xt_MgEM-VKod3XW6pzb5SzNGzi0p03XTPH4I2XU4_WYhNPVPUgUxc9qPaO565AirjgyfYuLpbcG2v-ELtryEYyKsbCylJlgF7bUNqo-LD96_K9FXichkh5LOiikqFGWTJlU8eXO3sBkVzNvsj-Bidszje1aOa-6dixgFof-IuloEQXJSKBrfdlrFQVuak4WB4TBxbEPr1qWL05LFcp6bFgslaUl1GWC5XmhkQkj21_DoHDL-j1Yk2F21B8CwrF-scPmoXklbJqd74vm6QGMzYx2V-7YFOwO5RJ1xdcKkmdAJVaXBuM2HNxl_D3Uqhe4CXYZtTxj7rt0qjOLV2ysnUxasdaWDETP1-efDK6dE7NkilB7Ydx-QJKfAa7WbYfEdeOmAHvoyfiWt3E"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/authentication/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "login request",
+                "description": "Login by email",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Pass user email number",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "text"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "text",
+                                            "example": "api_messages.login_success"
+                                        },
+                                        "token": {
+                                            "type": "text",
+                                            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTMxNGY2Y2Q4OTliNjY2ZTg3OWIzOGJhYmE4NjU3M2FiN2ExMzQ2NWZmMmJkZmVhMTUxMWQ3ZGUxMDYyOTU4NmE0OWQ2NWZlMmYxNzU4MTAiLCJpYXQiOjE2Nzk4MzM1MzkuNzEwNDQzLCJuYmYiOjE2Nzk4MzM1MzkuNzEwNDQzLCJleHAiOjE2OTU3MzExMzkuNzA5MzU3LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gQM2KAo_U1mumbqqf0QVdSY35wgKvfUNY9mC0-H58SS5hrC-EkA8EYPCSzvibRQp9DjRsYShBZhz-xL587-QpdjzjjJ70KP1I1ELX7upyK1sBpkhpuB4rbeXId8m_L5mZTtoyHn0udwDOR65ebEXDmlgop2oLOMsPTUMBMu76QuPZO7MWwydCwKO6uC-dZrt6dTYA0hkacUDuIizm4MJ07eJdYxG_MkA52bJYlE6Xt_MgEM-VKod3XW6pzb5SzNGzi0p03XTPH4I2XU4_WYhNPVPUgUxc9qPaO565AirjgyfYuLpbcG2v-ELtryEYyKsbCylJlgF7bUNqo-LD96_K9FXichkh5LOiikqFGWTJlU8eXO3sBkVzNvsj-Bidszje1aOa-6dixgFof-IuloEQXJSKBrfdlrFQVuak4WB4TBxbEPr1qWL05LFcp6bFgslaUl1GWC5XmhkQkj21_DoHDL-j1Yk2F21B8CwrF-scPmoXklbJqd74vm6QGMzYx2V-7YFOwO5RJ1xdcKkmdAJVaXBuM2HNxl_D3Uqhe4CXYZtTxj7rt0qjOLV2ysnUxasdaWDETP1-efDK6dE7NkilB7Ydx-QJKfAa7WbYfEdeOmAHvoyfiWt3E"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/authentication/get/user/data": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "get data",
+                "description": "get data",
+                "operationId": "getUserData",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/letters": {
+            "get": {
+                "tags": [
+                    "Letter"
+                ],
+                "summary": "letter index",
+                "description": "get all letters",
+                "operationId": "lettersIndex",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LetterCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Letter"
+                ],
+                "summary": "Store Letter",
+                "description": "Store Letter",
+                "operationId": "storeLetter",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreLetterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "api_messages.store_letter_successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/letters/{letter}": {
+            "get": {
+                "tags": [
+                    "Letter"
+                ],
+                "summary": "show letter",
+                "description": "show letter",
+                "operationId": "showLetter",
+                "parameters": [
+                    {
+                        "name": "letter",
+                        "in": "path",
+                        "description": "show id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LetterResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemNotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Letter"
+                ],
+                "summary": "Delete letter",
+                "description": "Delete letter request api",
+                "operationId": "destroyLetter",
+                "parameters": [
+                    {
+                        "name": "letter",
+                        "in": "path",
+                        "description": "letter id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Letter Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemNotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tasks": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "task index",
+                "description": "get all tasks",
+                "operationId": "tasksIndex",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Store Task",
+                "description": "Store Task",
+                "operationId": "storeTask",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreTaskRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "api_messages.store_task_successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tasks/{task}": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "show task",
+                "description": "show task",
+                "operationId": "showTask",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "show id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemNotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete task",
+                "description": "Delete task request api",
+                "operationId": "destroyTask",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "task id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Task Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemNotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "update task",
+                "description": "update task request api",
+                "operationId": "updateTask",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "task id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateTaskRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemNotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Name of the new user",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "example": "test@gmail.com "
+                    },
+                    "is_admin": {
+                        "title": "is_admin",
+                        "description": "is_admin",
+                        "type": "integer",
+                        "example": "0"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "Letter": {
+                "title": "Letter",
+                "description": "Letter model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title of taask",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "body": {
+                        "title": "body",
+                        "description": "body of taask",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "tasks": {
+                        "title": "tasks",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Task"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Letter"
+                }
+            },
+            "StoreLetterRequest": {
+                "title": "Store Letter request",
+                "description": "Store Letter request body data",
+                "required": [
+                    "title",
+                    "body"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "body": {
+                        "title": "body",
+                        "description": "string",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "user_id",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateLetterRequest": {
+                "title": "Update Letter request",
+                "description": "Update Letter request body data",
+                "required": [
+                    "title",
+                    "body",
+                    "status"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "body": {
+                        "title": "body",
+                        "description": "string",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "user_id",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "LetterCollection": {
+                "title": "Letter Collection",
+                "description": "Letter list",
+                "properties": {
+                    "data": {
+                        "title": "data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Letter"
+                        }
+                    },
+                    "links": {
+                        "title": "links",
+                        "description": "links",
+                        "properties": {
+                            "first": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=2"
+                            },
+                            "last": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=5"
+                            },
+                            "prev": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=1"
+                            },
+                            "next": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=3"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "path",
+                        "type": "string",
+                        "example": "http://127.0.0.1:8000/api/panel/users"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "per_page",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "to",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "total",
+                        "type": "integer",
+                        "example": "20"
+                    }
+                },
+                "type": "object"
+            },
+            "LetterResource": {
+                "title": "Channel Resource",
+                "description": "Get Channel",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/Letter"
+                    }
+                },
+                "type": "object"
+            },
+            "Task": {
+                "title": "Task",
+                "description": "Task model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title of taask",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "decription": {
+                        "title": "decription",
+                        "description": "decription of taask",
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "status of task",
+                        "type": "integer",
+                        "example": "0"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Task"
+                }
+            },
+            "StoreTaskRequest": {
+                "title": "Store Task request",
+                "description": "Store Task request body data",
+                "required": [
+                    "title",
+                    "description",
+                    "status"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "titl",
+                        "type": "string",
+                        "example": "new title"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateTaskRequest": {
+                "title": "Update Task request",
+                "description": "Update Task request body data",
+                "required": [
+                    "title",
+                    "description",
+                    "status"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "titl",
+                        "type": "string",
+                        "example": "new title"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Errors": {
+                "title": "Errors",
+                "description": "Errors",
+                "properties": {
+                    "key": {
+                        "title": "key",
+                        "description": "error message",
+                        "type": "string",
+                        "example": "value or values"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemNotFound": {
+                "title": "Item Not Found",
+                "description": "Item Not Found",
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "title": "message",
+                        "description": "Item Not Found",
+                        "type": "string",
+                        "example": "Item Not Found"
+                    }
+                },
+                "type": "object"
+            },
+            "Link": {
+                "title": "Link",
+                "description": "Link",
+                "properties": {
+                    "url": {
+                        "title": "url",
+                        "description": "url",
+                        "type": "string",
+                        "example": "http://127.0.0.1:8000/api/panel/users?page=1"
+                    },
+                    "label": {
+                        "title": "label",
+                        "description": "label",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "active": {
+                        "title": "active",
+                        "description": "active",
+                        "type": "boolean",
+                        "example": "true"
+                    }
+                },
+                "type": "object"
+            },
+            "Meta": {
+                "title": "Meta",
+                "description": "Meta",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "current_page",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "last_page",
+                        "type": "integer",
+                        "example": "5"
+                    },
+                    "links": {
+                        "title": "links",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Link"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "SuccessMessage": {
+                "title": "Success",
+                "description": "SuccessMessage",
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "title": "message",
+                        "description": "success message",
+                        "type": "string",
+                        "example": "success message"
+                    }
+                },
+                "type": "object"
+            },
+            "TaskCollection": {
+                "title": "Task Collection",
+                "description": "Task list",
+                "properties": {
+                    "data": {
+                        "title": "data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Task"
+                        }
+                    },
+                    "links": {
+                        "title": "links",
+                        "description": "links",
+                        "properties": {
+                            "first": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=2"
+                            },
+                            "last": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=5"
+                            },
+                            "prev": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=1"
+                            },
+                            "next": {
+                                "type": "string",
+                                "example": "http://127.0.0.1:8000/api/panel/users?page=3"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "path",
+                        "type": "string",
+                        "example": "http://127.0.0.1:8000/api/panel/users"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "per_page",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "to",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "total",
+                        "type": "integer",
+                        "example": "20"
+                    }
+                },
+                "type": "object"
+            },
+            "TaskResource": {
+                "title": "Channel Resource",
+                "description": "Get Channel",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/Task"
+                    }
+                },
+                "type": "object"
+            },
+            "Unauthenticated": {
+                "title": "Unauthenticated",
+                "description": "Unauthenticated",
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "title": "message",
+                        "description": "error message",
+                        "type": "string",
+                        "example": "Unauthenticated."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "passport": {
+                "type": "apiKey",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "name": "Authorization",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
