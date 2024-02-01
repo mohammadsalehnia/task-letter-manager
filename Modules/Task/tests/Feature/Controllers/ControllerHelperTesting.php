@@ -11,8 +11,8 @@ class ControllerHelperTesting extends TestCase
     use RefreshDatabase;
     protected $middlewares = ['api', 'json.response', 'auth:api','is-admin'];
 
-    const ADMIN_EMAIL = 'admin@smartgamers.net';
-    const USER_EMAIL = 'admin@smartgamers.net';
+    const ADMIN_EMAIL = 'admin@app.com';
+    const USER_EMAIL = 'admin@app.com';
 
     protected function setUp(): void
     {

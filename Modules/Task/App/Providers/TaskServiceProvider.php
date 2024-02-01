@@ -4,6 +4,8 @@ namespace Modules\Task\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Task\App\Models\Task;
+use Modules\Task\App\Observers\TaskObserver;
 use Modules\Task\App\Repositories\TaskRepository;
 use Modules\Task\App\Services\TaskService;
 
@@ -24,6 +26,9 @@ class TaskServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+        Task::observe(TaskObserver::class);
+
     }
 
     /**

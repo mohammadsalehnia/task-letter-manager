@@ -2,10 +2,8 @@
 
 namespace Modules\Task\App\Repositories;
 
-use App\Models\User;
 use App\Repositories\Repository;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Modules\Task\App\Models\Task;
 
 class TaskRepository extends Repository

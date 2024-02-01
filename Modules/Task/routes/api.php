@@ -15,10 +15,6 @@ use Modules\Task\App\Http\Controllers\TaskController;
     |
 */
 
-//Route::middleware(['auth:sanctum'])->prefix('v1')->name('api.')->group(function () {
-//    Route::get('task', fn(Request $request) => $request->user())->name('task');
-//});
-
 Route::middleware(['json.response'])->prefix('v1')->name('api.')->group(function () {
     Route::middleware(['auth:api','is-admin'])->group(function () {
         Route::resource('tasks', TaskController::class)->except('create', 'edit');
