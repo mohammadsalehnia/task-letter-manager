@@ -38,6 +38,10 @@ This Laravel project comprises two main modules, Task and Letter, with the follo
 7. Run passport:install for Laravel Passport configuration:
    ```bash
    php artisan passport:install
+   
+8. Run Horizon command
+   ```bash
+   php artisan horizon
 
 ### Task Module
 * The Task module provides functionality related to tasks in application.
