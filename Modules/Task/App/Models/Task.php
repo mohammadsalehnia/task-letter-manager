@@ -4,6 +4,8 @@ namespace Modules\Task\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\Letter\App\Models\Letter;
 use Modules\Task\App\Services\TaskStatus;
 use Modules\Task\Database\factories\TaskFactory;
 
@@ -23,13 +25,13 @@ class Task extends Model
         'status',
     ];
 
+    private TaskStatus $taskStatus;
+
+
     protected static function newFactory(): TaskFactory
     {
         return TaskFactory::new();
     }
-
-
-    private TaskStatus $taskStatus;
 
     public function transitionTo(TaskStatus $taskStatus): void
     {
@@ -61,6 +63,12 @@ class Task extends Model
     public function done(): void
     {
         $this->taskStatus->done();
+    }
+
+
+    public function letters(): BelongsToMany
+    {
+        return $this->belongsToMany(Letter::class);
     }
 
 }

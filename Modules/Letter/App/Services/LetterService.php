@@ -30,10 +30,10 @@ class LetterService
 
         if (isset($tasks)) {
             $letter->tasks()->sync($tasks);
+
         }
 
         SendLetterJob::dispatch($letter);
-
 
         return $letter;
     }

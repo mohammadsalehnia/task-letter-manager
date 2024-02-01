@@ -43,7 +43,7 @@ class LetterController extends Controller
     {
         $validatedData = $request->validated();
 
-        $letter = $this->letterService->save($validatedData);
+        $this->letterService->save($validatedData);
 
         return response([
             'message' => __('api_messages.store_letter_successfully')
