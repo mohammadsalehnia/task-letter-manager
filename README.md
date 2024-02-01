@@ -61,13 +61,22 @@ I used Laravel Breeze package for generate login and register pages for secure L
 
 
 
-### Tests
+## Tests
 Run this command for tests:
    ```bash
    php artisan test
    ```
 
-### Postman API Collection
+
+## Swagger API Documentation
+
+You can visit swagger API documentation in api/documentation
+
+open http://localhost:8000/api/documentation in your browser to see swagger docs
+
+
+
+## Postman API Collection
 
 You can download Postman collection from [here](https://drive.google.com/drive/folders/14lVOEwf5nK9EPSgyeICk1zwYr4OgzBOv?usp=sharing) and import it on your Postman application and using APIs. 
 
