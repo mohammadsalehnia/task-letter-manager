@@ -3,7 +3,6 @@
 namespace Modules\Task\App\Services;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Task\App\Models\Task;
 use Modules\Task\App\Repositories\TaskRepository;
 
 class TaskService
@@ -30,13 +29,12 @@ class TaskService
     {
         $task = $this->taskRepository->findById($taskId);
         if (!$task) {
-            return false; // Task not found
+            return false;
         }
 
-        // Update the task status
         $task->update(['status' => $status]);
 
-        return true; // Successfully updated the status
+        return true;
     }
 
 

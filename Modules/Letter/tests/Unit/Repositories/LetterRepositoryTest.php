@@ -72,6 +72,6 @@ class LetterRepositoryTest extends TestCase
         $result = $repository->paginate(10);
 
         $this->assertInstanceOf(LengthAwarePaginator::class, $result);
-        $this->assertEquals(10, $result->perPage()); // Ensure per page is correct
+        $this->assertEquals(10, $result->perPage());
     }
 }
