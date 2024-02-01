@@ -13,7 +13,3 @@ use Modules\Letter\App\Http\Controllers\LetterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group([], function () {
-    Route::resource('letter', LetterController::class)->names('letter');
-});

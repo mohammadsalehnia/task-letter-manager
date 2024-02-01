@@ -21,6 +21,5 @@ Route::middleware(['json.response'])->prefix('v1')->name('api.')->group(function
 
         Route::patch('/tasks/update/status/{task}', [TaskController::class, 'updateStatus'])
             ->name('tasks.update.status');
-
     });
 });

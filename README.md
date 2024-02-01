@@ -65,6 +65,6 @@ Run this command for tests:
 
 ### Postman API Collection
 
-You can download Postman collection from [here](https://drive.google.com/drive/folders/1aBOtw2cf4PxwIaDJmiZ_9SyDkExi3tb9?usp=sharing) and import it on your Postman application and using APIs. 
+You can download Postman collection from [here](https://drive.google.com/drive/folders/14lVOEwf5nK9EPSgyeICk1zwYr4OgzBOv?usp=sharing) and import it on your Postman application and using APIs. 
 
-Postman Collection Link: https://drive.google.com/drive/folders/1aBOtw2cf4PxwIaDJmiZ_9SyDkExi3tb9?usp=sharing
+Postman Collection Link: https://drive.google.com/drive/folders/14lVOEwf5nK9EPSgyeICk1zwYr4OgzBOv?usp=sharing
