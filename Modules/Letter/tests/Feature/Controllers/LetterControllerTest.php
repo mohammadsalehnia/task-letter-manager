@@ -8,17 +8,14 @@ use Modules\Letter\App\Models\Letter;
 use Modules\Letter\App\resources\LetterCollection;
 use Modules\Letter\App\resources\LetterResource;
 use Modules\Task\App\Models\Task;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LetterControllerTest extends ControllerHelperTesting
+class LetterControllerTest extends LetterControllerHelperTesting
 {
     private $paginateNumber = 20;
 
     public function testStoreMethod(): void
     {
-        $this->withoutExceptionHandling();
+//        $this->withoutExceptionHandling();
         $adminUser = User::factory()->admin()->create();
         Passport::actingAs($adminUser);
         $count = rand(1, 3);
@@ -123,5 +120,21 @@ class LetterControllerTest extends ControllerHelperTesting
         $this->assertModelMissing($letter);
 
         $this->assertEquals($this->middlewares, request()->route()->middleware());
+    }
+
+    public function testSearchLetters(): void
+    {
+        $letter1 = Letter::factory()->create(['title' => 'Test Letter 1']);
+        $letter2 = Letter::factory()->create(['title' => 'Test Letter 1']);
+        $letter3 = Letter::factory()->create(['title' => 'Test Letter 3']);
+
+        $searchData = ['title' => 'Test Letter 1'];
+        $result = $this->letterService->filter($searchData);
+
+        $this->assertEquals(2, $result->count());
+        $this->assertContains($letter1->title, $result->pluck('title')->toArray());
+        $this->assertContains($letter2->title, $result->pluck('title')->toArray());
+        $this->assertNotContains($letter3->title, $result->pluck('title')->toArray());
+
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Letter\App\Http\Controllers\LetterController;
+use Modules\Letter\App\Http\Controllers\Panel\LetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,3 +13,8 @@ use Modules\Letter\App\Http\Controllers\LetterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware(['auth:web','is-admin'])->prefix('panel')->name('panel.')->group(function () {
+    Route::resource('letters', LetterController::class)->names('letter');
+
+});

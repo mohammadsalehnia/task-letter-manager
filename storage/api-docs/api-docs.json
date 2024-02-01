@@ -338,6 +338,49 @@
                 ]
             }
         },
+        "/api/v1/letters/search": {
+            "post": {
+                "tags": [
+                    "Letter"
+                ],
+                "summary": "Search Letter",
+                "description": "Search Letter",
+                "operationId": "searchLetter",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchLetterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "api_messages.store_letter_successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tasks": {
             "get": {
                 "tags": [
@@ -664,9 +707,9 @@
                     "name": "Letter"
                 }
             },
-            "StoreLetterRequest": {
-                "title": "Store Letter request",
-                "description": "Store Letter request body data",
+            "SearchLetterRequest": {
+                "title": "SearchLetterRequest",
+                "description": "Search Letter request body data",
                 "required": [
                     "title",
                     "body"
@@ -699,13 +742,12 @@
                 },
                 "type": "object"
             },
-            "UpdateLetterRequest": {
-                "title": "Update Letter request",
-                "description": "Update Letter request body data",
+            "StoreLetterRequest": {
+                "title": "Store Letter request",
+                "description": "Store Letter request body data",
                 "required": [
                     "title",
-                    "body",
-                    "status"
+                    "body"
                 ],
                 "properties": {
                     "title": {
@@ -1104,9 +1146,9 @@
                 "scheme": "https",
                 "flows": {
                     "password": {
-                        "authorizationUrl": "http://localhost/oauth/authorize",
-                        "tokenUrl": "http://localhost/oauth/token",
-                        "refreshUrl": "http://localhost/token/refresh",
+                        "authorizationUrl": "http://localhost:8000/oauth/authorize",
+                        "tokenUrl": "http://localhost:8000/oauth/token",
+                        "refreshUrl": "http://localhost:8000/token/refresh",
                         "scopes": []
                     }
                 }

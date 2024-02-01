@@ -18,5 +18,7 @@ use Modules\Letter\App\Http\Controllers\LetterController;
 Route::middleware(['json.response'])->prefix('v1')->name('api.')->group(function () {
     Route::middleware(['auth:api','is-admin'])->group(function () {
         Route::resource('letters', LetterController::class)->except('create', 'edit');
+        Route::post('/letters/search', [LetterController::class, 'search'])->name('articles.search');
+
     });
 });
