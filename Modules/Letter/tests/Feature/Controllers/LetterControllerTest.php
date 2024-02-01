@@ -124,29 +124,4 @@ class LetterControllerTest extends ControllerHelperTesting
 
         $this->assertEquals($this->middlewares, request()->route()->middleware());
     }
-
-//    public function testUpdateMethod(): void
-//    {
-////        $this->withoutExceptionHandling();
-//        $task = Task::factory()->create();
-//        $data = Task::factory()->make()->toArray();
-//
-//        Passport::actingAs(User::factory()->admin()->create());
-//
-//        $response = $this->patchJson(route('api.tasks.update', $task->id), $data);
-//
-//        $response
-//            ->assertStatus(200)
-//            ->assertJson([
-//                'message' => __('api_messages.update_task_successfully'),
-//            ]);
-//
-//        $this->assertEquals(Task::find($task->id)->title, $data['title']);
-//        $this->assertEquals(Task::find($task->id)->description, $data['description']);
-//        $this->assertEquals(Task::find($task->id)->status, $data['status']);
-//
-//        $this->assertEquals($this->middlewares, request()->route()->middleware());
-//    }
-
-
 }
