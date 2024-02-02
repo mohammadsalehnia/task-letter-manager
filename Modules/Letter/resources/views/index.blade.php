@@ -1,63 +1,63 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Letters') }}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Profile') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
 
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    #
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Title
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Body
-                                </th>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-                                <th scope="col" class="px-6 py-3">
-                                    Actions
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($letters as $letter)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                        {{$letter->id}}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{$letter->title}}
+            <a href="{{ route('panel.letter.create') }}" class="btn btn-info">Create Letter</a>
 
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$letter->body}}
-                                    </td>
-
-                                    <td class="px-6 py-4">
-                                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('panel.letter.edit',$letter->id) }}">Edit</a>
-                                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('panel.letter.destroy',$letter->id) }}">Edit</a>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        {{ $letters->links() }}
+            @if (session('success'))
+                <div class="col-sm-12">
+                    <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                       
                     </div>
                 </div>
-            </div>
+            @endif
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Body</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                @foreach ($letters as $letter)
+                    <tr>
+                        <th scope="row">{{ $letter->id }}</th>
+                        <td>{{ $letter->title }}</td>
+                        <td>{{ $letter->body }}</td>
+                        <td>
+
+                            <a style="margin-bottom: 4px" class="btn btn-success" href="{{ route('panel.letter.show',$letter->id) }}">Show</a>
+                            <form method="POST" action="{{ route('panel.letter.destroy',$letter->id) }}">
+                                @csrf
+                                @method('delete')
+                                <a class="btn btn-danger" :href="route('panel.letter.destroy',$letter->id)"
+                                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Delete') }}
+                                </a>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+
+            {{ $letters->links() }}
         </div>
     </div>
 </x-app-layout>
+

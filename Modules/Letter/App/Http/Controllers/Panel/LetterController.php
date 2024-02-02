@@ -3,35 +3,49 @@
 namespace Modules\Letter\App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Letter\App\Http\Requests\StoreLetterRequest;
 use Modules\Letter\App\Models\Letter;
 use Modules\Letter\App\Repositories\LetterRepository;
 use Modules\Letter\App\resources\LetterCollection;
 use Modules\Letter\App\Services\LetterService;
+use Modules\Task\App\Models\Task;
 use Modules\Task\App\Repositories\TaskRepository;
 
 class LetterController extends Controller
 {
     private LetterService $letterService;
     private LetterRepository $letterRepository;
+    private UserRepository $userRepository;
+    private TaskRepository $taskRepository;
 
     /**
      * @param LetterService $letterService
      * @param LetterRepository $letterRepository
+     * @param UserRepository $userRepository
+     * @param TaskRepository $taskRepository
      */
-    public function __construct(LetterService $letterService, LetterRepository $letterRepository)
+    public function __construct(LetterService    $letterService,
+                                LetterRepository $letterRepository,
+                                UserRepository   $userRepository,
+                                TaskRepository   $taskRepository)
     {
         $this->letterService = $letterService;
         $this->letterRepository = $letterRepository;
+        $this->userRepository = $userRepository;
+        $this->taskRepository = $taskRepository;
     }
+
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
         $letters = new LetterCollection($this->letterRepository->paginate(10));
 
         return view('letter::index', compact('letters'));
@@ -40,19 +54,24 @@ class LetterController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(TaskRepository $taskRepository)
+    public function create()
     {
-        $tasks = $taskRepository->all();
+        $tasks = $this->taskRepository->all();
+        $users = $this->userRepository->all();
 
-        return view('letter::create', compact('tasks'));
+        return view('letter::create', compact('tasks', 'users'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreLetterRequest $request): RedirectResponse
     {
-        //
+        $validatedData = $request->validated();
+
+        $this->letterService->save($validatedData);
+
+        return redirect(route('panel.letter.index'));
     }
 
     /**
@@ -60,23 +79,9 @@ class LetterController extends Controller
      */
     public function show($id)
     {
-        return view('letter::show');
-    }
+        $letter = $this->letterRepository->findById($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        return view('letter::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
+        return view('letter::show', compact('letter'));
     }
 
     /**
@@ -84,6 +89,9 @@ class LetterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->letterRepository->delete($id);
+        return redirect()
+            ->back()
+            ->with('success', 'Letter has been deleted successfully!');
     }
 }
