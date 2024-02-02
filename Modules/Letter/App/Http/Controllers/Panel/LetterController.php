@@ -5,14 +5,10 @@ namespace Modules\Letter\App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Modules\Letter\App\Http\Requests\StoreLetterRequest;
-use Modules\Letter\App\Models\Letter;
 use Modules\Letter\App\Repositories\LetterRepository;
 use Modules\Letter\App\resources\LetterCollection;
 use Modules\Letter\App\Services\LetterService;
-use Modules\Task\App\Models\Task;
 use Modules\Task\App\Repositories\TaskRepository;
 
 class LetterController extends Controller
@@ -71,7 +67,7 @@ class LetterController extends Controller
 
         $this->letterService->save($validatedData);
 
-        return redirect(route('panel.letter.index'));
+        return redirect(route('panel.letters.index'))->with('success', 'Letter has been created successfully!');
     }
 
     /**
@@ -90,8 +86,7 @@ class LetterController extends Controller
     public function destroy($id)
     {
         $this->letterRepository->delete($id);
-        return redirect()
-            ->back()
-            ->with('success', 'Letter has been deleted successfully!');
+        return redirect(route('panel.letters.index'))->with('success', 'Letter has been deleted successfully!');
+
     }
 }
