@@ -15,6 +15,6 @@ use Modules\Letter\App\Http\Controllers\Panel\LetterController;
 */
 
 Route::middleware(['auth:web','is-admin'])->prefix('panel')->name('panel.')->group(function () {
-    Route::resource('letters', LetterController::class)->names('letter');
+    Route::resource('letters', LetterController::class)->names('letters');
 
 });

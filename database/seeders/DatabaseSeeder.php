@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Modules\Task\App\Models\Task;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,9 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
             'password' => Hash::make('password'),
         ]);
+
+        User::factory()->count(3)->user()->create();
+
+        Task::factory()->count(5)->create();
     }
 }
