@@ -67,6 +67,12 @@ Run this command for tests:
    php artisan test
    ```
 
+## Laravel Dusk
+Run this command for browser tests:
+   ```bash
+   php artisan dusk
+   ```
+
 
 ## Swagger API Documentation
 
