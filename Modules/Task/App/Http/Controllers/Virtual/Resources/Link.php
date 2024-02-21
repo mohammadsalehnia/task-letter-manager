@@ -3,15 +3,12 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Link",
  *      description="Link",
  *      type="object",
  * )
  */
-
-
 class Link
 {
     /**
@@ -43,9 +40,7 @@ class Link
      *      example="true"
      * )
      *
-     * @var boolean
+     * @var bool
      */
     public $active;
-
-
 }

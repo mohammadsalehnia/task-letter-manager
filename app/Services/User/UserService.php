@@ -2,11 +2,9 @@
 
 namespace App\Services\User;
 
-use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-
 
 class UserService
 {
@@ -20,6 +18,7 @@ class UserService
     public function save($data): Model
     {
         $data['password'] = Hash::make($data['password']);
+
         return $this->userRepository->create($data);
     }
 }

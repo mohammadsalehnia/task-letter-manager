@@ -22,13 +22,14 @@ class TaskService
     public function update(int $taskId, array $data): bool
     {
         $task = $this->taskRepository->findById($taskId);
+
         return $this->taskRepository->update($task, $data);
     }
 
     public function updateStatus(int $taskId, int $status): bool
     {
         $task = $this->taskRepository->findById($taskId);
-        if (!$task) {
+        if (! $task) {
             return false;
         }
 
@@ -36,6 +37,4 @@ class TaskService
 
         return true;
     }
-
-
 }

@@ -2,20 +2,15 @@
 
 namespace Modules\Task\tests\Unit\Repositories;
 
-use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Modules\Task\App\Models\Task;
 use Modules\Task\App\Repositories\TaskRepository;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskRepositoryTest extends TestCase
 {
     /**
      * A basic unit test example.
-     *
-     * @return void
      */
     public function testCreateMethod(): void
     {

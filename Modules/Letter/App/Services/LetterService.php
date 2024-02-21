@@ -11,9 +11,6 @@ class LetterService
 {
     private LetterRepository $letterRepository;
 
-    /**
-     * @param LetterRepository $letterRepository
-     */
     public function __construct(LetterRepository $letterRepository)
     {
         $this->letterRepository = $letterRepository;
@@ -42,8 +39,7 @@ class LetterService
     public function filter(array $data, $limit = 20): LetterCollection
     {
         $result = $this->letterRepository->filter($data);
+
         return new LetterCollection($result->paginate($limit));
     }
-
-
 }

@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Modules\Task\App\Http\Controllers\TaskController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +10,3 @@ use Modules\Task\App\Http\Controllers\TaskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-

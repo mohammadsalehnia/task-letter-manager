@@ -5,8 +5,6 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Modules\Task\App\Models\Task;
 
 abstract class Repository
 {
@@ -19,9 +17,6 @@ abstract class Repository
 
     abstract public function model(): string;
 
-    /**
-     * @return Collection
-     */
     public function all(): Collection
     {
         return $this->model->latest()->get();
@@ -42,11 +37,6 @@ abstract class Repository
         return $this->model->whereId($id)->exists();
     }
 
-
-    /**
-     * @param int $id
-     * @return Model|null
-     */
     public function findById(int $id): ?Model
     {
         try {
@@ -55,5 +45,4 @@ abstract class Repository
             return null;
         }
     }
-
 }

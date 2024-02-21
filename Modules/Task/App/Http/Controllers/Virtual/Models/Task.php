@@ -6,6 +6,7 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Models;
  * @OA\Schema(
  *     title="Task",
  *     description="Task model",
+ *
  *     @OA\Xml(
  *         name="Task"
  *     )
@@ -21,7 +22,7 @@ class Task
      *     example=1
      * )
      *
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -54,8 +55,7 @@ class Task
      *      example="0"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $status;
-
 }

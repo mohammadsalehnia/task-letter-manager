@@ -20,8 +20,7 @@ class LetterFactory extends Factory
         return [
             'title' => fake()->title,
             'body' => fake()->text,
-            'user_id' => User::factory()->create()
+            'user_id' => User::factory()->create(),
         ];
     }
 }
-

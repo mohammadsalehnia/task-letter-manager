@@ -14,27 +14,23 @@ use Modules\Task\App\Repositories\TaskRepository;
 class LetterController extends Controller
 {
     private LetterService $letterService;
+
     private LetterRepository $letterRepository;
+
     private UserRepository $userRepository;
+
     private TaskRepository $taskRepository;
 
-    /**
-     * @param LetterService $letterService
-     * @param LetterRepository $letterRepository
-     * @param UserRepository $userRepository
-     * @param TaskRepository $taskRepository
-     */
-    public function __construct(LetterService    $letterService,
-                                LetterRepository $letterRepository,
-                                UserRepository   $userRepository,
-                                TaskRepository   $taskRepository)
+    public function __construct(LetterService $letterService,
+        LetterRepository $letterRepository,
+        UserRepository $userRepository,
+        TaskRepository $taskRepository)
     {
         $this->letterService = $letterService;
         $this->letterRepository = $letterRepository;
         $this->userRepository = $userRepository;
         $this->taskRepository = $taskRepository;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -86,6 +82,7 @@ class LetterController extends Controller
     public function destroy($id)
     {
         $this->letterRepository->delete($id);
+
         return redirect(route('panel.letters.index'))->with('success', 'Letter has been deleted successfully!');
 
     }

@@ -12,7 +12,6 @@ class LetterTest extends TestCase
 {
     use ModelHelperTesting;
 
-
     protected function model(): Model
     {
         return new Letter();
@@ -34,5 +33,4 @@ class LetterTest extends TestCase
         $this->assertCount($count, $letter->tasks);
         $this->assertTrue($letter->tasks->first() instanceof Task);
     }
-
 }

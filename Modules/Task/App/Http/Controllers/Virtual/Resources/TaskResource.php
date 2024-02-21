@@ -1,8 +1,8 @@
 <?php
 
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
+
 /**
- *
  * @OA\Schema(
  *      title="Channel Resource",
  *      description="Get Channel",
@@ -10,11 +10,9 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class TaskResource
 {
     /**
-     *
      * @OA\Property(property="data", type="object", ref="#/components/schemas/Task")
      *
      * @var string

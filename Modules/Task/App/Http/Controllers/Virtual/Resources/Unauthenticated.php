@@ -3,7 +3,6 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Unauthenticated",
  *      description="Unauthenticated",
@@ -12,7 +11,6 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class Unauthenticated
 {
     /**
@@ -25,5 +23,4 @@ class Unauthenticated
      * @var string
      */
     public $message;
-
 }

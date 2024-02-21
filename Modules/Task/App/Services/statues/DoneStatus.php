@@ -8,7 +8,6 @@ use Modules\Task\App\Services\TaskStatus;
 
 class DoneStatus extends TaskStatus
 {
-
     public function todo(): void
     {
         if ($this->task !== null) {

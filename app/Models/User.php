@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Modules\Letter\App\Models\Letter;
 
-
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
