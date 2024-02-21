@@ -16,12 +16,9 @@ use Modules\Task\App\Services\TaskService;
 class TaskController extends Controller
 {
     private TaskService $taskService;
+
     private TaskRepository $taskRepository;
 
-    /**
-     * @param TaskService $taskService
-     * @param TaskRepository $taskRepository
-     */
     public function __construct(TaskService $taskService, TaskRepository $taskRepository)
     {
         $this->taskService = $taskService;
@@ -36,14 +33,18 @@ class TaskController extends Controller
      *      summary="task index",
      *      description="get all tasks",
      *      security={{"passport": {}},},
+     *
      *      @OA\Response(
      *        response=200,
      *        description="Success",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/TaskCollection")
      *      ),
+     *
      *      @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -61,14 +62,19 @@ class TaskController extends Controller
      *      summary="Store Task",
      *      description="Store Task",
      *      security={{"passport": {}},},
+     *
      *     @OA\RequestBody(
      *            required=true,
+     *
      *            @OA\JsonContent(ref="#/components/schemas/StoreTaskRequest")
      *        ),
+     *
      *    @OA\Response(
      *    response=200,
      *    description="Success",
+     *
      *    @OA\JsonContent(
+     *
      *       @OA\Property(property="message", type="string", example="api_messages.store_task_successfully"),
      *    ),
      *  ),
@@ -81,7 +87,7 @@ class TaskController extends Controller
         $this->taskService->save($validatedData);
 
         return response([
-            'message' => 'api_messages.store_task_successfully'
+            'message' => 'api_messages.store_task_successfully',
         ], 201);
     }
 
@@ -93,6 +99,7 @@ class TaskController extends Controller
      *      summary="show task",
      *           description="show task",
      *       security={{"passport": {}},},
+     *
      *       @OA\Parameter(
      *          description="show id",
      *          in="path",
@@ -100,19 +107,25 @@ class TaskController extends Controller
      *          required=true,
      *          example="1"
      *      ),
+     *
      *      @OA\Response(
      *         response=200,
      *         description="Success",
+     *
      *         @OA\JsonContent(ref="#/components/schemas/TaskResource")
      *       ),
+     *
      *      @OA\Response(
      *        response=404,
      *        description="error",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
      *      ),
+     *
      *      @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -121,9 +134,9 @@ class TaskController extends Controller
     {
         $task = $this->taskRepository->findById($id);
 
-        if (!isset($task)) {
+        if (! isset($task)) {
             return response([
-                'message' => 'api_messages.task_not_found'
+                'message' => 'api_messages.task_not_found',
             ]);
         }
 
@@ -138,6 +151,7 @@ class TaskController extends Controller
      *      summary="update task",
      *           description="update task request api",
      *       security={{"passport": {}},},
+     *
      *       @OA\Parameter(
      *          description="task id",
      *          in="path",
@@ -145,23 +159,31 @@ class TaskController extends Controller
      *          required=true,
      *          example="1"
      *      ),
+     *
      *      @OA\RequestBody(
      *           required=true,
+     *
      *           @OA\JsonContent(ref="#/components/schemas/UpdateTaskRequest")
      *       ),
+     *
      *      @OA\Response(
      *        response=200,
      *        description="Success",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/SuccessMessage")
      *      ),
+     *
      *      @OA\Response(
      *        response=404,
      *        description="error",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
      *      ),
+     *
      *      @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -185,6 +207,7 @@ class TaskController extends Controller
      *      summary="Delete task",
      *      description="Delete task request api",
      *       security={{"passport": {}},},
+     *
      *       @OA\Parameter(
      *          description="task id",
      *          in="path",
@@ -192,19 +215,25 @@ class TaskController extends Controller
      *          required=true,
      *          example="1"
      *      ),
+     *
      *      @OA\Response(
      *        response=200,
      *        description="Success",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/SuccessMessage")
      *      ),
+     *
      *      @OA\Response(
      *        response=404,
      *        description="Task Not Found",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
      *      ),
+     *
      *       @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -213,9 +242,9 @@ class TaskController extends Controller
     {
         $task = $this->taskRepository->findById($id);
 
-        if (!isset($task)) {
+        if (! isset($task)) {
             return response([
-                'message' => 'api_messages.task_not_found'
+                'message' => 'api_messages.task_not_found',
             ], 404);
         }
 
@@ -231,7 +260,7 @@ class TaskController extends Controller
         $validatedData = $request->validated();
         $status = $validatedData['status'];
 
-        if (!$this->taskService->updateStatus($id, $status)) {
+        if (! $this->taskService->updateStatus($id, $status)) {
             return response([
                 'message' => __('api_messages.task_not_found'),
             ], 404);

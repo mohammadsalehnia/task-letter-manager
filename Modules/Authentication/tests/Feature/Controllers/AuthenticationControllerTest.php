@@ -7,7 +7,6 @@ use Modules\Authentication\App\resources\UserResource;
 
 class AuthenticationControllerTest extends AuthenticationControllerHelperTesting
 {
-
     public function testRegisterMethod(): void
     {
         $data = User::factory()->make()->toArray();
@@ -27,7 +26,7 @@ class AuthenticationControllerTest extends AuthenticationControllerHelperTesting
 
     public function testLoginMethod(): void
     {
-//        $this->withoutExceptionHandling();
+        //        $this->withoutExceptionHandling();
 
         $user = User::factory()->user()->create();
 

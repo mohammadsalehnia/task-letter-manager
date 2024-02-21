@@ -14,7 +14,6 @@ class TaskRepository extends Repository
     }
 
     /**
-     * @param int $paginateNumber
      * @return mixed
      */
     public function paginate(int $paginateNumber = 10): LengthAwarePaginator

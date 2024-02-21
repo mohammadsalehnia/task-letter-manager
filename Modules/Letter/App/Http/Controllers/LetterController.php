@@ -15,18 +15,14 @@ use Modules\Letter\App\Services\LetterService;
 class LetterController extends Controller
 {
     private LetterService $letterService;
+
     private LetterRepository $letterRepository;
 
-    /**
-     * @param LetterService $letterService
-     * @param LetterRepository $letterRepository
-     */
     public function __construct(LetterService $letterService, LetterRepository $letterRepository)
     {
         $this->letterService = $letterService;
         $this->letterRepository = $letterRepository;
     }
-
 
     /**
      * @OA\Get(
@@ -36,14 +32,18 @@ class LetterController extends Controller
      *      summary="letter index",
      *      description="get all letters",
      *      security={{"passport": {}},},
+     *
      *      @OA\Response(
      *        response=200,
      *        description="Success",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/LetterCollection")
      *      ),
+     *
      *      @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -61,14 +61,19 @@ class LetterController extends Controller
      *      summary="Store Letter",
      *      description="Store Letter",
      *      security={{"passport": {}},},
+     *
      *     @OA\RequestBody(
      *            required=true,
+     *
      *            @OA\JsonContent(ref="#/components/schemas/StoreLetterRequest")
      *        ),
+     *
      *    @OA\Response(
      *    response=200,
      *    description="Success",
+     *
      *    @OA\JsonContent(
+     *
      *       @OA\Property(property="message", type="string", example="api_messages.store_letter_successfully"),
      *    ),
      *  ),
@@ -81,7 +86,7 @@ class LetterController extends Controller
         $this->letterService->save($validatedData);
 
         return response([
-            'message' => __('api_messages.store_letter_successfully')
+            'message' => __('api_messages.store_letter_successfully'),
         ], 201);
 
     }
@@ -94,6 +99,7 @@ class LetterController extends Controller
      *      summary="show letter",
      *           description="show letter",
      *       security={{"passport": {}},},
+     *
      *       @OA\Parameter(
      *          description="show id",
      *          in="path",
@@ -101,19 +107,25 @@ class LetterController extends Controller
      *          required=true,
      *          example="1"
      *      ),
+     *
      *      @OA\Response(
      *         response=200,
      *         description="Success",
+     *
      *         @OA\JsonContent(ref="#/components/schemas/LetterResource")
      *       ),
+     *
      *      @OA\Response(
      *        response=404,
      *        description="error",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
      *      ),
+     *
      *      @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -122,9 +134,9 @@ class LetterController extends Controller
     {
         $letter = $this->letterRepository->findById($id);
 
-        if (!isset($letter)) {
+        if (! isset($letter)) {
             return response([
-                'message' => 'api_messages.letter_not_found'
+                'message' => 'api_messages.letter_not_found',
             ]);
         }
 
@@ -139,6 +151,7 @@ class LetterController extends Controller
      *      summary="Delete letter",
      *      description="Delete letter request api",
      *       security={{"passport": {}},},
+     *
      *       @OA\Parameter(
      *          description="letter id",
      *          in="path",
@@ -146,19 +159,25 @@ class LetterController extends Controller
      *          required=true,
      *          example="1"
      *      ),
+     *
      *      @OA\Response(
      *        response=200,
      *        description="Success",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/SuccessMessage")
      *      ),
+     *
      *      @OA\Response(
      *        response=404,
      *        description="Letter Not Found",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/ItemNotFound")
      *      ),
+     *
      *       @OA\Response(
      *        response=401,
      *        description="Unauthorized",
+     *
      *        @OA\JsonContent(ref="#/components/schemas/Unauthenticated")
      *      ),
      *     )
@@ -167,9 +186,9 @@ class LetterController extends Controller
     {
         $letter = $this->letterRepository->findById($id);
 
-        if (!isset($letter)) {
+        if (! isset($letter)) {
             return response([
-                'message' => 'api_messages.letter_not_found'
+                'message' => 'api_messages.letter_not_found',
             ], 404);
         }
 
@@ -180,7 +199,6 @@ class LetterController extends Controller
         ], 200);
     }
 
-
     /**
      * @OA\Post(
      *      path="/api/v1/letters/search",
@@ -189,14 +207,19 @@ class LetterController extends Controller
      *      summary="Search Letter",
      *      description="Search Letter",
      *      security={{"passport": {}},},
+     *
      *     @OA\RequestBody(
      *            required=true,
+     *
      *            @OA\JsonContent(ref="#/components/schemas/SearchLetterRequest")
      *        ),
+     *
      *    @OA\Response(
      *    response=200,
      *    description="Success",
+     *
      *    @OA\JsonContent(
+     *
      *       @OA\Property(property="message", type="string", example="api_messages.store_letter_successfully"),
      *    ),
      *  ),
@@ -206,6 +229,7 @@ class LetterController extends Controller
     {
         $validatedData = $request->validated();
         $articles = $this->letterService->filter($validatedData);
+
         return response()->json($articles);
     }
 }

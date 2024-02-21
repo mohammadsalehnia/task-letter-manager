@@ -9,7 +9,6 @@ use Tests\DuskTestCase;
 
 class LetterControllerTest extends DuskTestCase
 {
-
     public function testIndexPage(): void
     {
         $user = User::factory()->admin()->create();

@@ -3,7 +3,6 @@
 namespace Modules\Letter\App\Http\Controllers\Virtual\Requests;
 
 /**
- *
  * @OA\Schema(
  *      title="SearchLetterRequest",
  *      description="Search Letter request body data",
@@ -14,7 +13,6 @@ namespace Modules\Letter\App\Http\Controllers\Virtual\Requests;
  */
 class SearchLetterRequest
 {
-
     /**
      * @OA\Property(
      *      title="title",
@@ -43,7 +41,7 @@ class SearchLetterRequest
      *      example=1
      * )
      *
-     * @var integer
+     * @var int
      */
     public $user_id;
 
@@ -51,14 +49,14 @@ class SearchLetterRequest
      * @OA\Property(
      *   property="tasks",
      *       type="array",
+     *
      *       @OA\Items(
      *          type="number",
      *          example=1,
      *       ),
      *   ),
+     *
      * @var array
      */
-
     public $tasks;
-
 }

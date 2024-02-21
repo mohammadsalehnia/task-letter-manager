@@ -37,31 +37,27 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
 
     /**
      * Indicate that the model's type should be user.
-     *
-     * @return static
      */
     public function user(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'is_admin' => false,
         ]);
     }
 
     /**
      * Indicate that the model's type should be admin.
-     *
-     * @return static
      */
     public function admin(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'is_admin' => true,
         ]);
     }

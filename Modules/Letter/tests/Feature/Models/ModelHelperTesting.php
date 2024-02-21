@@ -25,5 +25,4 @@ trait ModelHelperTesting
 
         $this->assertDatabaseHas($table, $data);
     }
-
 }

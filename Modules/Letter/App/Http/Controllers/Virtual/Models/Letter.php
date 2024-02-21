@@ -6,6 +6,7 @@ namespace Modules\Letter\App\Http\Controllers\Virtual\Models;
  * @OA\Schema(
  *     title="Letter",
  *     description="Letter model",
+ *
  *     @OA\Xml(
  *         name="Letter"
  *     )
@@ -21,7 +22,7 @@ class Letter
      *     example=1
      * )
      *
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -50,8 +51,8 @@ class Letter
     /**
      *   @OA\Property(type="array",
      *      title="tasks",
+     *
      *      @OA\Items(ref="#/components/schemas/Task"))
      */
     public $tasks;
-
 }

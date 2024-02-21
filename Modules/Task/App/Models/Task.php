@@ -2,8 +2,8 @@
 
 namespace Modules\Task\App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Letter\App\Models\Letter;
 use Modules\Task\App\Services\TaskStatus;
@@ -14,8 +14,11 @@ class Task extends Model
     use HasFactory;
 
     public const STATUS_TODO = 1;
+
     public const STATUS_DOING = 2;
+
     public const STATUS_DONE = 3;
+
     /**
      * The attributes that are mass assignable.
      */
@@ -27,7 +30,6 @@ class Task extends Model
 
     private TaskStatus $taskStatus;
 
-
     protected static function newFactory(): TaskFactory
     {
         return TaskFactory::new();
@@ -38,7 +40,6 @@ class Task extends Model
         $this->taskStatus = $taskStatus;
         $this->taskStatus->setTask($this);
     }
-
 
     public function getTaskStatus(): TaskStatus
     {
@@ -65,10 +66,8 @@ class Task extends Model
         $this->taskStatus->done();
     }
 
-
     public function letters(): BelongsToMany
     {
         return $this->belongsToMany(Letter::class);
     }
-
 }

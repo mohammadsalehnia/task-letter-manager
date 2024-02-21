@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use Illuminate\Support\Collection;
 
 class UserRepository extends Repository
 {
@@ -12,7 +11,7 @@ class UserRepository extends Repository
         return User::class;
     }
 
-    public function findByEmail(string $email): User|null
+    public function findByEmail(string $email): ?User
     {
         return $this->model->whereEmail($email)->first();
     }

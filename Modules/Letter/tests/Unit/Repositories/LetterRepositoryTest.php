@@ -26,7 +26,7 @@ class LetterRepositoryTest extends TestCase
             'title' => 'title',
             'body' => 'body',
             'user_id' => $user->id,
-            'tasks' => $tasks->pluck('id')
+            'tasks' => $tasks->pluck('id'),
         ];
 
         $result = $repository->create($data);
@@ -45,7 +45,7 @@ class LetterRepositoryTest extends TestCase
             'title' => 'new title',
             'body' => 'new body',
             'user_id' => $user->id,
-            'tasks' => $tasks->pluck('id')
+            'tasks' => $tasks->pluck('id'),
         ];
 
         $repository->update($letter, $data);

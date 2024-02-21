@@ -3,7 +3,6 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Task Collection",
  *      description="Task list",
@@ -11,12 +10,12 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class TaskCollection
 {
     /**
      *   @OA\Property(type="array",
      *      title="data",
+     *
      *      @OA\Items(ref="#/components/schemas/Task"))
      */
     public $data;
@@ -36,12 +35,12 @@ class TaskCollection
     public $links;
 
     /**
-     *
      * @OA\Property(property="meta", type="object", ref="#/components/schemas/Meta")
      *
      * @var string
      */
     public $meta;
+
     /**
      * @OA\Property(
      *      title="path",
@@ -60,7 +59,7 @@ class TaskCollection
      *      example="10"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $per_page;
 
@@ -71,7 +70,7 @@ class TaskCollection
      *      example="10"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $to;
 
@@ -82,7 +81,7 @@ class TaskCollection
      *      example="20"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $total;
 }

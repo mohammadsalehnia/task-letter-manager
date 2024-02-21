@@ -3,7 +3,6 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Item Not Found",
  *      description="Item Not Found",
@@ -12,7 +11,6 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class ItemNotFound
 {
     /**

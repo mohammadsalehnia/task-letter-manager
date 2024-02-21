@@ -3,7 +3,6 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Requests;
 
 /**
- *
  * @OA\Schema(
  *      title="Store Task request",
  *      description="Store Task request body data",
@@ -14,7 +13,6 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Requests;
  */
 class StoreTaskRequest
 {
-
     /**
      * @OA\Property(
      *      title="title",
@@ -43,8 +41,7 @@ class StoreTaskRequest
      *      example=1
      * )
      *
-     * @var integer
+     * @var int
      */
     public $status;
-
 }

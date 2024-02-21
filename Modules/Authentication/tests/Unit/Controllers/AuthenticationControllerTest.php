@@ -6,8 +6,6 @@ use App\Repositories\UserRepository;
 use App\Services\User\UserService;
 use Modules\Authentication\App\Http\Controllers\AuthenticationController;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AuthenticationControllerTest extends TestCase
 {

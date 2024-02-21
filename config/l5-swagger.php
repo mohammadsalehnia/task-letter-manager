@@ -187,11 +187,11 @@ return [
                     'name' => 'Authorization',
                     'scheme' => 'https',
                     'flows' => [
-                        "password" => [
-                            "authorizationUrl" => config('app.url') . '/oauth/authorize',
-                            "tokenUrl" => config('app.url') . '/oauth/token',
-                            "refreshUrl" => config('app.url') . '/token/refresh',
-                            "scopes" => [],
+                        'password' => [
+                            'authorizationUrl' => config('app.url').'/oauth/authorize',
+                            'tokenUrl' => config('app.url').'/oauth/token',
+                            'refreshUrl' => config('app.url').'/token/refresh',
+                            'scopes' => [],
                         ],
                     ],
                 ],

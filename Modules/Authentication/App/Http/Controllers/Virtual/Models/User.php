@@ -1,10 +1,12 @@
 <?php
 
 namespace Modules\Authentication\App\Http\Controllers\Virtual\Models;
+
 /**
  * @OA\Schema(
  *     title="User",
  *     description="User model",
+ *
  *     @OA\Xml(
  *         name="User"
  *     )
@@ -20,7 +22,7 @@ class User
      *     example=1
      * )
      *
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -53,8 +55,7 @@ class User
      *      example="0"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $is_admin;
-
 }

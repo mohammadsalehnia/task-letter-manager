@@ -8,7 +8,6 @@ use Modules\Task\App\Models\Task;
 use Modules\Task\App\resources\TaskCollection;
 use Modules\Task\App\resources\TaskResource;
 
-
 class TaskControllerTest extends TaskControllerHelperTesting
 {
     private $paginateNumber = 20;
@@ -144,7 +143,7 @@ class TaskControllerTest extends TaskControllerHelperTesting
 
     public function testUpdateMethod(): void
     {
-//        $this->withoutExceptionHandling();
+        //        $this->withoutExceptionHandling();
         $task = Task::factory()->create();
         $data = Task::factory()->make()->toArray();
 

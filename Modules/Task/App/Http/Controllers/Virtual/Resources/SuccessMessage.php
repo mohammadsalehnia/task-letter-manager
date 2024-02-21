@@ -2,9 +2,7 @@
 
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
-
 /**
- *
  * @OA\Schema(
  *      title="Success",
  *      description="SuccessMessage",
@@ -13,7 +11,6 @@ namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class SuccessMessage
 {
     /**

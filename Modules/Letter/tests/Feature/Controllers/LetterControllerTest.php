@@ -15,7 +15,7 @@ class LetterControllerTest extends LetterControllerHelperTesting
 
     public function testStoreMethod(): void
     {
-//        $this->withoutExceptionHandling();
+        //        $this->withoutExceptionHandling();
         $adminUser = User::factory()->admin()->create();
         Passport::actingAs($adminUser);
         $count = rand(1, 3);
@@ -30,7 +30,6 @@ class LetterControllerTest extends LetterControllerHelperTesting
                 'message' => __('api_messages.store_letter_successfully'),
             ]);
 
-
         unset($data['tasks']);
 
         $this->assertDatabaseHas('letters', $data);
@@ -44,7 +43,7 @@ class LetterControllerTest extends LetterControllerHelperTesting
 
     public function testIndexMethod(): void
     {
-//         $this->withoutExceptionHandling();
+        //         $this->withoutExceptionHandling();
         Letter::factory()->count(30)->create();
 
         $adminUser = User::factory()->admin()->create();
@@ -89,7 +88,7 @@ class LetterControllerTest extends LetterControllerHelperTesting
 
     public function testShowMethod(): void
     {
-//        $this->withoutExceptionHandling();
+        //        $this->withoutExceptionHandling();
         $letter = Letter::factory()->create();
 
         Passport::actingAs(User::factory()->admin()->create());

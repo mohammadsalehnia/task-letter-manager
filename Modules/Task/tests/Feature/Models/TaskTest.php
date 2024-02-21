@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Letter\App\Models\Letter;
 use Modules\Task\App\Models\Task;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskTest extends TestCase
 {

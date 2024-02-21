@@ -15,5 +15,5 @@ use Modules\Authentication\App\Http\Controllers\AuthenticationController;
 */
 
 Route::group([], function () {
-//    Route::resource('authentication', AuthenticationController::class)->names('authentication');
+    //    Route::resource('authentication', AuthenticationController::class)->names('authentication');
 });

@@ -3,15 +3,12 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Meta",
  *      description="Meta",
  *      type="object",
  * )
  */
-
-
 class Meta
 {
     /**
@@ -21,7 +18,7 @@ class Meta
      *      example="1"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $current_page;
 
@@ -32,7 +29,7 @@ class Meta
      *      example="1"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $from;
 
@@ -43,15 +40,15 @@ class Meta
      *      example="5"
      * )
      *
-     * @var integer
+     * @var int
      */
     public $last_page;
 
     /**
      *   @OA\Property(type="array",
      *      title="links",
+     *
      *      @OA\Items(ref="#/components/schemas/Link"))
      */
     public $links;
-
 }

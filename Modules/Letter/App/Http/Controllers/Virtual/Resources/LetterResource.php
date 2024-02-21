@@ -1,8 +1,8 @@
 <?php
 
 namespace Modules\Letter\App\Http\Controllers\Virtual\Resources;
+
 /**
- *
  * @OA\Schema(
  *      title="Channel Resource",
  *      description="Get Channel",
@@ -10,11 +10,9 @@ namespace Modules\Letter\App\Http\Controllers\Virtual\Resources;
  *
  * )
  */
-
 class LetterResource
 {
     /**
-     *
      * @OA\Property(property="data", type="object", ref="#/components/schemas/Letter")
      *
      * @var string

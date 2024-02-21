@@ -3,15 +3,12 @@
 namespace Modules\Task\App\Http\Controllers\Virtual\Resources;
 
 /**
- *
  * @OA\Schema(
  *      title="Errors",
  *      description="Errors",
  *      type="object",
  * )
  */
-
-
 class Errors
 {
     /**
@@ -24,5 +21,4 @@ class Errors
      * @var string
      */
     public $key;
-
 }
